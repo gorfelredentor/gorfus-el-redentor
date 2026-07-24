@@ -222,6 +222,13 @@ section{position:relative;padding:5.5rem 1.4rem;z-index:10}
   mix-blend-mode:multiply;
 }
 .crt img{width:100%}
+.video-frame{
+  max-width:900px;margin:2.2rem auto 0;position:relative;
+  border:14px solid #1c1c1c;border-radius:14px;
+  box-shadow:0 0 0 3px var(--piedra),0 0 0 4px #000,0 24px 70px rgba(0,0,0,.9),0 0 60px rgba(59,15,115,.5);
+  overflow:hidden;background:#000;aspect-ratio:16/9;
+}
+.video-frame iframe{width:100%;height:100%;display:block;border:0}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:3rem}
 .feat{
   display:flex;gap:.85rem;align-items:flex-start;
@@ -365,7 +372,7 @@ footer .studio{font-family:'Cinzel',serif;color:var(--dorado);letter-spacing:.2e
   background:linear-gradient(180deg,transparent,rgba(9,9,9,.92) 40%);
 }
 .jefe-card .placa h3{font-size:1.05rem;color:var(--dorado-claro);text-shadow:0 2px 6px #000}
-.jefe-card .placa p{font-family:'MedievalSharp',serif;font-size:.85rem;color:var(--hueso-osc);margin-top:.1rem}
+.jefe-card .placa p{font-family:'MedievalSharp',serif;font-size:.85rem;color:var(--hueso);margin-top:.1rem;text-shadow:0 1px 4px #000}
 .jefe-card.final{grid-column:1/-1;height:340px;padding-bottom:0}
 .jefe-card.final .sprite{height:52%}
 .jefes-nota{text-align:center;color:var(--hueso-osc);font-family:'MedievalSharp',serif;margin-top:2rem}
@@ -953,16 +960,36 @@ footer .cred-rol{
   .crt.chico{max-width:280px;border-width:8px;border-radius:8px}
   .etapas-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}
   .etapa-desc{font-family:'MedievalSharp',serif;color:var(--hueso);font-size:.88rem;line-height:1.55;margin-top:.9rem}
-  .etapa.bloqueada h3 b{color:var(--hueso-osc);font-weight:700;letter-spacing:.08em}
-  .etapa.bloqueada .sub{color:#7a1f1f;font-weight:700;letter-spacing:.08em}
-  .etapa.bloqueada{opacity:.7}
+  .etapa.bloqueada h3 b{
+    color:#ff5c5c;font-weight:700;letter-spacing:.08em;
+    text-shadow:0 0 8px rgba(255,60,60,.9),0 0 18px rgba(255,60,60,.6);
+    animation:parpadeo 1.7s ease-in-out infinite;
+  }
+  .etapa.bloqueada .sub{
+    color:#ff8a8a;font-weight:700;letter-spacing:.08em;
+    text-shadow:0 0 8px rgba(255,60,60,.7);
+    animation:parpadeo 1.7s ease-in-out infinite;
+  }
+  .etapa.bloqueada{opacity:1}
   .oculto{display:none}
   .etapa.desbloqueada{opacity:1}
-  .etapa.desbloqueada .sub{color:var(--hueso-osc);font-weight:400}
-  .jefe-card.bloqueada{opacity:.6;filter:grayscale(.5)}
-  .jefe-card.bloqueada .placa h3{color:var(--hueso-osc);font-weight:700;letter-spacing:.1em}
-  .jefe-card.bloqueada .placa p{color:#7a1f1f}
+  .etapa.desbloqueada .sub{color:var(--hueso-osc);font-weight:400;text-shadow:none;animation:none}
+  .jefe-card.bloqueada{opacity:1}
+  .jefe-card.bloqueada .fondo,
+  .jefe-card.bloqueada .sprite{opacity:.3;filter:grayscale(1)}
+  .jefe-card.bloqueada .placa h3{
+    color:#ff5c5c;font-weight:700;letter-spacing:.12em;
+    text-shadow:0 0 8px rgba(255,60,60,.9),0 0 18px rgba(255,60,60,.6);
+    animation:parpadeo 1.7s ease-in-out infinite;
+  }
+  .jefe-card.bloqueada .placa p{
+    color:#ff8a8a;text-shadow:0 0 8px rgba(255,60,60,.7);
+    animation:parpadeo 1.7s ease-in-out infinite;
+  }
   .jefe-card.desbloqueada{opacity:1;filter:none}
+  .jefe-card.desbloqueada .placa h3{animation:none;color:var(--dorado-claro);text-shadow:0 2px 6px #000}
+  .jefe-card.desbloqueada .placa p{animation:none;color:var(--hueso);text-shadow:0 1px 4px #000}
+  @keyframes parpadeo{0%,100%{opacity:1}50%{opacity:.45}}
 
   .desbloqueo{max-width:520px;margin:3rem auto 0;text-align:center;
     background:linear-gradient(180deg,#16101d,#0b0810);border:2px solid var(--dorado);
@@ -1055,6 +1082,11 @@ footer .cred-rol{
       <div class="feat"><span class="ic">⚙</span><div><b>Windows · Linux · Steam Deck</b><span>Hecho en Godot 4</span></div></div>
     </div>
     <div class="insert">INSERT COIN</div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/b1D0Pu24O40" title="Gorfus el Redentor — Gameplay"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+    </div>
   </div>
 </section>
 
@@ -1298,7 +1330,15 @@ footer .cred-rol{
   .vc-lapida{display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;
     background:linear-gradient(180deg,#1c1a1a,#0d0c0c);border:2px solid #4a3a2a;
     border-radius:14px 14px 6px 6px;padding:1.4rem 2.2rem;box-shadow:0 0 25px rgba(0,0,0,.6), inset 0 0 20px rgba(122,31,31,.15)}
-  .vc-cruz{font-size:1.6rem;color:#7a1f1f;text-shadow:0 0 8px rgba(122,31,31,.8)}
+  .vc-cruz{
+    font-size:3.4rem;color:var(--dorado-claro);
+    text-shadow:0 0 12px rgba(242,193,78,.9),0 0 26px rgba(242,193,78,.6),0 0 46px rgba(215,163,40,.4);
+    animation:brillo-santo 2.4s ease-in-out infinite;
+  }
+  @keyframes brillo-santo{
+    0%,100%{text-shadow:0 0 12px rgba(242,193,78,.9),0 0 26px rgba(242,193,78,.6),0 0 46px rgba(215,163,40,.4)}
+    50%{text-shadow:0 0 20px rgba(242,193,78,1),0 0 42px rgba(242,193,78,.85),0 0 70px rgba(215,163,40,.6)}
+  }
   .vc-label{display:block;font-family:'MedievalSharp',serif;color:var(--hueso-osc,#c9bfa8);
     font-size:1.15rem;letter-spacing:.03em;line-height:1.4;text-shadow:0 0 6px rgba(0,0,0,.8)}
   .vc-badge{filter:sepia(.4) hue-rotate(-15deg) saturate(1.6) brightness(1.05);
