@@ -241,6 +241,7 @@ section{position:relative;padding:5.5rem 1.4rem;z-index:10}
 #controles{background:var(--negro)}
 .cpo-frame{max-width:880px;margin:0 auto;position:relative;border:4px solid var(--piedra);
   box-shadow:0 0 0 2px #000, 0 22px 60px rgba(0,0,0,.85), 0 0 46px rgba(215,163,40,.18)}
+.cpo-frame.cpo-chico{max-width:480px}
 .cpo-frame::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse at 50% 0%,rgba(242,193,78,.22),transparent 55%);
@@ -253,12 +254,12 @@ section{position:relative;padding:5.5rem 1.4rem;z-index:10}
 
 /* Galería */
 #galeria{background:linear-gradient(180deg,var(--negro),var(--morado-osc) 50%,var(--negro))}
-.masonry{columns:3 260px;column-gap:1rem}
-.masonry figure{break-inside:avoid;margin-bottom:1rem;cursor:pointer;position:relative;overflow:hidden;
-  border:2px solid var(--piedra);transition:border-color .2s, box-shadow .2s}
+.masonry{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem}
+.masonry figure{margin:0;cursor:pointer;position:relative;overflow:hidden;aspect-ratio:4/3;
+  border:2px solid var(--piedra);transition:border-color .2s, box-shadow .2s;background:#050508}
 .masonry figure:hover{border-color:var(--dorado);box-shadow:0 0 24px rgba(215,163,40,.4)}
-.masonry img{transition:transform .3s}
-.masonry figure:hover img{transform:scale(1.04)}
+.masonry img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.masonry figure:hover img{transform:scale(1.06)}
 #lightbox{
   position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.94);
   display:none;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out;
@@ -438,63 +439,63 @@ footer .studio{font-family:'Cinzel',serif;color:var(--dorado);letter-spacing:.2e
 /* ====== MÚSICA ====== */
 #musica{background:linear-gradient(180deg,var(--negro),#1a0f2e 50%,var(--negro))}
 .jukebox{
-  max-width:760px;margin:0 auto;
+  max-width:520px;margin:0 auto;
   background:linear-gradient(180deg,#16101d,#0b0810);
   border:2px solid var(--dorado);position:relative;
   box-shadow:0 0 50px rgba(215,163,40,.2),0 24px 60px rgba(0,0,0,.85);
   clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px),0 14px);
-  padding:2rem 1.6rem;user-select:none;
+  padding:1.3rem 1.1rem;user-select:none;
 }
 .jb-now{
   text-align:center;font-family:'Cinzel',serif;color:var(--dorado-claro);
-  font-size:1rem;letter-spacing:.1em;min-height:1.4em;margin-bottom:.3rem;
+  font-size:.85rem;letter-spacing:.1em;min-height:1.4em;margin-bottom:.2rem;
   text-shadow:0 0 12px rgba(215,163,40,.5);
 }
-.jb-sub{text-align:center;font-family:'MedievalSharp',serif;color:var(--hueso-osc);font-size:.85rem;margin-bottom:1.4rem}
-.jb-controls{display:flex;align-items:center;justify-content:center;gap:1.1rem;margin-bottom:1.2rem}
+.jb-sub{text-align:center;font-family:'MedievalSharp',serif;color:var(--hueso-osc);font-size:.7rem;margin-bottom:.9rem}
+.jb-controls{display:flex;align-items:center;justify-content:center;gap:.7rem;margin-bottom:.8rem}
 .jb-btn{
   background:none;border:2px solid var(--dorado);color:var(--dorado);cursor:pointer;
-  font-size:1.05rem;width:52px;height:52px;display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;width:36px;height:36px;display:flex;align-items:center;justify-content:center;
   transition:all .2s;font-family:inherit;
   clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);
 }
 .jb-btn:hover{background:rgba(215,163,40,.15);box-shadow:0 0 18px rgba(215,163,40,.5)}
-.jb-btn.principal{width:64px;height:64px;font-size:1.4rem;
+.jb-btn.principal{width:44px;height:44px;font-size:1rem;
   background:linear-gradient(180deg,var(--dorado-claro),var(--dorado));color:var(--negro)}
 .jb-btn.principal:hover{box-shadow:0 0 26px rgba(242,193,78,.8)}
-.jb-barra{display:flex;align-items:center;gap:.8rem;margin-bottom:1.6rem}
-.jb-tiempo{font-family:'Cinzel',serif;font-size:.75rem;color:var(--hueso-osc);min-width:42px;text-align:center}
-.jb-progreso{flex:1;height:10px;background:#050508;border:1px solid var(--piedra);cursor:pointer;position:relative}
+.jb-barra{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.jb-tiempo{font-family:'Cinzel',serif;font-size:.65rem;color:var(--hueso-osc);min-width:34px;text-align:center}
+.jb-progreso{flex:1;height:7px;background:#050508;border:1px solid var(--piedra);cursor:pointer;position:relative}
 .jb-progreso .fill{height:100%;width:0%;
   background:linear-gradient(90deg,var(--morado),var(--dorado));
   box-shadow:0 0 10px rgba(215,163,40,.6);pointer-events:none}
-.jb-vol{display:flex;align-items:center;gap:.5rem}
+.jb-vol{display:flex;align-items:center;gap:.4rem}
 .jb-vol input[type=range]{
-  -webkit-appearance:none;appearance:none;width:90px;height:6px;background:#050508;
+  -webkit-appearance:none;appearance:none;width:64px;height:5px;background:#050508;
   border:1px solid var(--piedra);cursor:pointer;
 }
 .jb-vol input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;appearance:none;width:14px;height:14px;background:var(--dorado);
+  -webkit-appearance:none;appearance:none;width:11px;height:11px;background:var(--dorado);
   cursor:pointer;box-shadow:0 0 8px rgba(215,163,40,.7);
 }
-.jb-lista{list-style:none;border-top:1px solid rgba(215,163,40,.25);max-height:280px;overflow-y:auto;
+.jb-lista{list-style:none;border-top:1px solid rgba(215,163,40,.25);max-height:190px;overflow-y:auto;
   scrollbar-color:var(--dorado) #111;scrollbar-width:thin}
 .jb-lista li{
-  display:flex;align-items:center;gap:.9rem;padding:.75rem .6rem;cursor:pointer;
-  border-bottom:1px solid rgba(75,75,75,.3);transition:background .15s, padding-left .15s;font-size:.92rem;
+  display:flex;align-items:center;gap:.6rem;padding:.5rem .5rem;cursor:pointer;
+  border-bottom:1px solid rgba(75,75,75,.3);transition:background .15s, padding-left .15s;font-size:.78rem;
 }
-.jb-lista li:hover{background:rgba(215,163,40,.07);padding-left:1rem}
+.jb-lista li:hover{background:rgba(215,163,40,.07);padding-left:.8rem}
 .jb-lista li.activa{background:rgba(59,15,115,.35);border-left:3px solid var(--dorado)}
-.jb-lista .num{font-family:'Cinzel',serif;color:var(--hueso-osc);font-size:.78rem;min-width:1.6em;text-align:right}
+.jb-lista .num{font-family:'Cinzel',serif;color:var(--hueso-osc);font-size:.68rem;min-width:1.4em;text-align:right}
 .jb-lista .nom{flex:1;color:var(--hueso)}
 .jb-lista li.activa .nom{color:var(--dorado-claro)}
-.jb-lista .dur{font-family:'Cinzel',serif;font-size:.75rem;color:var(--hueso-osc)}
-.jb-lista .eq{display:none;gap:2px;align-items:flex-end;height:14px}
+.jb-lista .dur{font-family:'Cinzel',serif;font-size:.65rem;color:var(--hueso-osc)}
+.jb-lista .eq{display:none;gap:2px;align-items:flex-end;height:12px}
 .jb-lista li.activa.sonando .eq{display:flex}
-.jb-lista .eq span{width:3px;background:var(--dorado);animation:eq .7s ease-in-out infinite}
+.jb-lista .eq span{width:2px;background:var(--dorado);animation:eq .7s ease-in-out infinite}
 .jb-lista .eq span:nth-child(2){animation-delay:.2s}
 .jb-lista .eq span:nth-child(3){animation-delay:.45s}
-@keyframes eq{0%,100%{height:4px}50%{height:14px}}
+@keyframes eq{0%,100%{height:3px}50%{height:12px}}
 .jb-nota{text-align:center;font-family:'MedievalSharp',serif;color:var(--hueso-osc);font-size:.85rem;margin-top:1.4rem}
 
 /* Mini reproductor fijo en el nav, junto a Comunidad */
@@ -520,6 +521,15 @@ footer .studio{font-family:'Cinzel',serif;color:var(--dorado);letter-spacing:.2e
 }
 @media(max-width:1180px){#navPlayer .navtit{display:none}}
 @media(max-width:860px){#navPlayer{margin-left:.6rem;order:3}}
+#navPlayer input[type=range]{
+  -webkit-appearance:none;appearance:none;width:52px;height:5px;background:#050508;
+  border:1px solid var(--piedra);cursor:pointer;
+}
+#navPlayer input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:11px;height:11px;background:var(--dorado);
+  cursor:pointer;box-shadow:0 0 8px rgba(215,163,40,.7);
+}
+@media(max-width:1180px){#navPlayer input[type=range]{display:none}}
 
 
 /* ====== CRÉDITOS ====== */
@@ -548,6 +558,7 @@ footer .cred-rol{
   <button id="menuBtn" aria-label="Menú">☰</button>
   <ul id="menu">
     <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#estilo">Estilo</a></li>
     <li><a href="#historia">Historia</a></li>
     <li><a href="#personajes">Personajes</a></li>
     <li><a href="#jefes">Jefes</a></li>
@@ -561,10 +572,11 @@ footer .cred-rol{
     <li><a href="#descargar">Descargar</a></li>
     <li><a href="#comunidad">Comunidad</a></li>
   </ul>
-  <div id="navPlayer" title="Música de fondo">
-    <button id="navPlay" class="invitando" aria-label="Reproducir música">▶</button>
-    <button id="navNext" aria-label="Siguiente tema">⏭</button>
-    <span class="navtit" id="navTit">♪ activá el sonido</span>
+  <div id="navPlayer" title="Tema de la página">
+    <button id="navPlay" class="invitando" aria-label="Reproducir tema">▶</button>
+    <button id="navStop" aria-label="Detener tema">■</button>
+    <input type="range" id="navVol" min="0" max="100" value="60" aria-label="Volumen del tema">
+    <span class="navtit" id="navTit">♪ Gorfus Theme</span>
   </div>
 </nav>
 
@@ -578,6 +590,35 @@ footer .cred-rol{
   </div>
   <div class="scrollhint">▾</div>
 </header>
+
+<section id="estilo">
+  <div class="wrap">
+    <h2 class="sec-title">Un Arcade de los 80</h2>
+    <div class="orn"><span>✝</span></div>
+    <p class="sec-sub">Plataformas y acción, a la vieja usanza</p>
+    <p style="max-width:760px;margin:1.2rem auto 1.6rem;text-align:center;font-family:'MedievalSharp',serif;color:var(--hueso);font-size:1.02rem;line-height:1.7">
+      Gorfus el Redentor es un scroller de plataformas y acción inspirado en los arcades clásicos de los 80 y principios de los 90.
+      Se avanza de izquierda a derecha, saltando trampas y golpeando enemigos con un báculo sagrado, enfrentando un jefe al final de cada etapa.
+      Sin checkpoints regalados ni vidas infinitas: cada golpe cuenta, cada salto se mide.
+    </p>
+    <div class="ctl-list">
+      <span class="ctl">Castlevania — atmósfera gótica y control rígido de plataformas</span>
+      <span class="ctl">Ghosts 'n Goblins — dificultad exigente y enemigos que no perdonan</span>
+      <span class="ctl">Wardner — niveles laberínticos y jefes imponentes</span>
+    </div>
+
+    <div class="vitrina" style="margin-top:2.4rem">
+      <div class="marco" style="max-width:340px;padding:2rem 1.6rem 1.6rem">
+        <img src="img/arcade_original.png" alt="Gabinete arcade original de Gorfus el Redentor" style="height:420px">
+        <figcaption>La Máquina Original</figcaption>
+      </div>
+      <p style="max-width:640px;text-align:center;font-family:'MedievalSharp',serif;color:var(--hueso);font-size:1rem;line-height:1.7;margin-top:.4rem">
+        Gorfus el Redentor se puede jugar en PC y otras plataformas, pero su forma definitiva es el gabinete arcade original:
+        un mueble de pie con arte exclusivo, joystick y botones físicos, tal como se jugaba en los salones recreativos de antaño.
+      </p>
+    </div>
+  </div>
+</section>
 
 <section id="historia">
   <div class="wrap">
@@ -824,58 +865,169 @@ footer .cred-rol{
     <h2 class="sec-title">Las Pruebas Divinas</h2>
     <p class="sec-sub">El mapa de la penitencia — cada prueba termina frente a un jefe</p>
     <div class="mapa-frame"><img class="px" src="img/img_055.png" alt="Mapa del mundo de Gorfus"></div>
+
+    <div class="pant-duo">
+      <div class="pant-item">
+        <div class="crt chico"><img src="img/pantalla_menu.png" alt="Menú principal" loading="lazy"></div>
+        <span>Menú Principal — Insertá tus créditos y tocá Start</span>
+      </div>
+      <div class="pant-item">
+        <div class="crt chico"><img src="img/pantalla_ranking.png" alt="Pantalla de iniciales" loading="lazy"></div>
+        <span>Salón de los Caídos — Dejá tus iniciales si sobrevivís</span>
+      </div>
+    </div>
+
     <div class="etapas-lista">
       <div class="etapa">
-        <h3>El Cementerio</h3>
-        <div class="sub">Muros cubiertos de musgo, lápidas y una reja que cruje bajo la luna</div>
-        <div class="tira"><img class="px" src="img/img_056.png" alt="El Cementerio" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+        <h3>1 — Bosque</h3>
+        <div class="sub">Umbral de las Tinieblas</div>
+        <div class="crt chico"><img src="img/etapa_bosque.png" alt="Bosque — Umbral de las Tinieblas" loading="lazy"></div>
+        <p class="etapa-desc">La entrada al viaje de Gorfus: árboles retorcidos y una maleza que parece respirar. Algo ahí abajo hace que la tierra se pudra a su paso.</p>
       </div>
       <div class="etapa">
-        <h3>La Cripta</h3>
-        <div class="sub">Piedra sobre piedra, grietas que susurran</div>
-        <div class="tira"><img class="px" src="img/img_057.png" alt="La Cripta" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+        <h3>2 — Catacumbas</h3>
+        <div class="sub">Criptas de los Olvidados</div>
+        <div class="crt chico"><img src="img/etapa_catacumbas.png" alt="Catacumbas — Criptas de los Olvidados" loading="lazy"></div>
+        <p class="etapa-desc">Pasillos de piedra apilados sobre huesos ajenos. Un peso antiguo se arrastra entre las criptas, más grande que cualquier tumba.</p>
       </div>
       <div class="etapa">
-        <h3>Las Cavernas</h3>
-        <div class="sub">La oscuridad tiene paredes... y se mueven</div>
-        <div class="tira"><img class="px" src="img/img_058.png" alt="Las Cavernas" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+        <h3>3 — Infierno</h3>
+        <div class="sub">Fosa del Fuego Eterno</div>
+        <div class="crt chico"><img src="img/etapa_infierno.png" alt="Infierno — Fosa del Fuego Eterno" loading="lazy"></div>
+        <p class="etapa-desc">El calor lo anuncia antes que la vista: una fosa ardiente donde algo forjado en fuego espera para heraldar el fin de Gorfus.</p>
       </div>
-      <div class="etapa">
-        <h3>Tierras Ardientes</h3>
-        <div class="sub">Volcanes en el horizonte y lava bajo los pies</div>
-        <div class="tira"><img class="px" src="img/img_059.png" alt="Tierras Ardientes" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+      <div class="etapa bloqueada" data-codigo="GORFUS-PURGATORIO" data-titulo="4 — Purgatorio" data-subtitulo="El Purgatorio Sangriento" data-nombre-etapa="Purgatorio" data-idx="4">
+        <h3>4 — <b>???</b></h3>
+        <div class="sub">🔒 Bloqueado</div>
+        <div class="crt chico oculto"><img src="img/etapa_purgatorio.png" alt="Purgatorio — El Purgatorio Sangriento" loading="lazy"></div>
+        <p class="etapa-desc oculto">Un tribunal sin jueces vivos. Aquí cada pecado se pesa, y algo con memoria de huesos dicta la sentencia final.</p>
       </div>
-      <div class="etapa">
-        <h3>El Castillo — La Entrada</h3>
-        <div class="sub">Nadie entra dos veces</div>
-        <div class="tira"><img class="px" src="img/img_060.png" alt="El Castillo — La Entrada" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+      <div class="etapa bloqueada" data-codigo="GORFUS-LAMENTOS" data-titulo="5 — Lamentos" data-subtitulo="Lamentos Eternos" data-nombre-etapa="Lamentos" data-idx="5">
+        <h3>5 — <b>???</b></h3>
+        <div class="sub">🔒 Bloqueado</div>
+        <div class="crt chico oculto"><img src="img/etapa_lamentos.png" alt="Lamentos — Lamentos Eternos" loading="lazy"></div>
+        <p class="etapa-desc oculto">Cánticos rotos resuenan entre las ruinas. Un falso predicador guía a los que ya no pueden rezar por sí mismos.</p>
       </div>
-      <div class="etapa">
-        <h3>El Castillo — El Corredor</h3>
-        <div class="sub">Pasillos que susurran tu nombre</div>
-        <div class="tira"><img class="px" src="img/img_061.png" alt="El Castillo — El Corredor" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+      <div class="etapa bloqueada" data-codigo="GORFUS-NOCTURNO" data-titulo="6 — Nocturno" data-subtitulo="Nocturno Maldito" data-nombre-etapa="Nocturno" data-idx="6">
+        <h3>6 — <b>???</b></h3>
+        <div class="sub">🔒 Bloqueado</div>
+        <div class="crt chico oculto"><img src="img/etapa_nocturno.png" alt="Nocturno — Nocturno Maldito" loading="lazy"></div>
+        <p class="etapa-desc oculto">Una noche que nunca amanece. Entre las sombras, una hechicera escarlata teje sortilegios que Gorfus deberá cortar de raíz.</p>
       </div>
-      <div class="etapa">
-        <h3>El Castillo — El Ascenso</h3>
-        <div class="sub">Subir es la única salida</div>
-        <div class="tira alta"><img class="px" src="img/img_062.png" alt="El Castillo — El Ascenso" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para descender ↕</div>
+      <div class="etapa bloqueada" data-codigo="GORFUS-CAVERNA" data-titulo="7 — Caverna" data-subtitulo="Abadía de las Profundidades" data-nombre-etapa="Caverna" data-idx="7">
+        <h3>7 — <b>???</b></h3>
+        <div class="sub">🔒 Bloqueado</div>
+        <div class="crt chico oculto"><img src="img/etapa_caverna.png" alt="Caverna — Abadía de las Profundidades" loading="lazy"></div>
+        <p class="etapa-desc oculto">Roca viva y silencio de piedra. En lo más hondo de la abadía enterrada, algo hecho de la propia montaña aguarda despertar.</p>
       </div>
-      <div class="etapa">
-        <h3>La Torre de la Redención</h3>
-        <div class="sub">El final del camino: los retratos de tus verdugos cuelgan de sus muros</div>
-        <div class="tira grande"><img class="px" src="img/img_063.png" alt="La Torre de la Redención" loading="lazy"></div>
-        <div class="tira-hint">Deslizá para explorar el nivel ⟷</div>
+      <div class="etapa bloqueada" data-codigo="GORFUS-CEMENTERIO" data-titulo="8 — Cementerio" data-subtitulo="Sepulcro sin Retorno" data-nombre-etapa="Cementerio" data-idx="8">
+        <h3>8 — <b>???</b></h3>
+        <div class="sub">🔒 Bloqueado</div>
+        <div class="crt chico oculto"><img src="img/etapa_cementerio.png" alt="Cementerio — Sepulcro sin Retorno" loading="lazy"></div>
+        <p class="etapa-desc oculto">Lápidas que ya conocen tu nombre. Los muertos aquí no descansan del todo, y su rey ahorcado los mantiene de pie.</p>
       </div>
+      <div class="etapa bloqueada" data-codigo="GORFUS-CASTILLO" data-titulo="9 — Castillo" data-subtitulo="Castillo de la Redención" data-nombre-etapa="Castillo" data-idx="9">
+        <h3>9 — <b>???</b></h3>
+        <div class="sub">🔒 Bloqueado</div>
+        <div class="crt chico oculto"><img src="img/etapa_castillo.png" alt="Castillo — Castillo de la Redención" loading="lazy"></div>
+        <p class="etapa-desc oculto">La entrada final. Tras estos muros no hay más escenarios que cruzar, solo la subida que decide si Gorfus se redime... o cae para siempre.</p>
+      </div>
+    </div>
+
+    <div class="desbloqueo">
+      <span class="desbloqueo-titulo">✦ Ingresar Código Desbloqueador ✦</span>
+      <p class="desbloqueo-sub">El juego te entrega un código al superar cada prueba. Ingresalo acá para revelar la siguiente.</p>
+      <div class="desbloqueo-form">
+        <input type="text" id="codigoInput" placeholder="Código secreto..." autocomplete="off" spellcheck="false">
+        <button id="codigoBtn" class="demo-btn">Desbloquear</button>
+      </div>
+      <div class="desbloqueo-msg" id="codigoMsg"></div>
     </div>
   </div>
 </section>
+
+<style>
+  .pant-duo{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem}
+  .pant-item{display:flex;flex-direction:column;align-items:center;gap:.6rem;max-width:280px}
+  .pant-item span{font-family:'MedievalSharp',serif;color:var(--hueso-osc);font-size:.85rem;text-align:center}
+  .crt.chico{max-width:280px;border-width:8px;border-radius:8px}
+  .etapas-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}
+  .etapa-desc{font-family:'MedievalSharp',serif;color:var(--hueso);font-size:.88rem;line-height:1.55;margin-top:.9rem}
+  .etapa.bloqueada h3 b{color:var(--hueso-osc);font-weight:700;letter-spacing:.08em}
+  .etapa.bloqueada .sub{color:#7a1f1f;font-weight:700;letter-spacing:.08em}
+  .etapa.bloqueada{opacity:.7}
+  .oculto{display:none}
+  .etapa.desbloqueada{opacity:1}
+  .etapa.desbloqueada .sub{color:var(--hueso-osc);font-weight:400}
+
+  .desbloqueo{max-width:520px;margin:3rem auto 0;text-align:center;
+    background:linear-gradient(180deg,#16101d,#0b0810);border:2px solid var(--dorado);
+    padding:1.6rem 1.4rem;box-shadow:0 0 40px rgba(215,163,40,.18),inset 0 0 20px rgba(0,0,0,.5)}
+  .desbloqueo-titulo{display:block;font-family:'Cinzel',serif;color:var(--dorado-claro);letter-spacing:.1em;font-size:.95rem;margin-bottom:.5rem}
+  .desbloqueo-sub{font-family:'MedievalSharp',serif;color:var(--hueso-osc);font-size:.82rem;margin-bottom:1.1rem}
+  .desbloqueo-form{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+  .desbloqueo-form input{background:#050508;border:1px solid var(--piedra);color:var(--hueso);
+    padding:.55rem .8rem;font-family:'Cinzel',serif;font-size:.85rem;min-width:200px}
+  .desbloqueo-form input:focus{outline:none;border-color:var(--dorado)}
+  .desbloqueo-msg{margin-top:.8rem;font-family:'MedievalSharp',serif;font-size:.85rem;min-height:1.2em}
+  .desbloqueo-msg.ok{color:#6fbf73}
+  .desbloqueo-msg.error{color:#c33}
+</style>
+<script>
+(function(){
+  const LS_KEY = 'gorfus_desbloqueados';
+  const SECRET = 9241; // debe coincidir con la constante SECRET del juego (GDScript)
+  const input = document.getElementById('codigoInput');
+  const btn = document.getElementById('codigoBtn');
+  const msg = document.getElementById('codigoMsg');
+  const bloqueadas = [...document.querySelectorAll('.etapa.bloqueada')];
+
+  // Misma formula que en el juego (Godot/GDScript): un codigo por nivel, sin necesidad de servidor.
+  function codigoEsperado(nivel){
+    const seed = (nivel * 92821 + SECRET) % 1679616; // 36^4 combinaciones posibles
+    const s = seed.toString(36).toUpperCase().padStart(4,'0');
+    return 'GORFUS-' + String(nivel).padStart(2,'0') + '-' + s;
+  }
+
+  function desbloquear(etapa, guardar){
+    etapa.classList.remove('bloqueada');
+    etapa.classList.add('desbloqueada');
+    etapa.querySelectorAll('.oculto').forEach(el => el.classList.remove('oculto'));
+    if(etapa.dataset.titulo) etapa.querySelector('h3').textContent = etapa.dataset.titulo;
+    if(etapa.dataset.subtitulo) etapa.querySelector('.sub').textContent = etapa.dataset.subtitulo;
+    if(guardar){
+      let arr = [];
+      try{ arr = JSON.parse(localStorage.getItem(LS_KEY)) || []; }catch(e){}
+      if(!arr.includes(etapa.dataset.idx)) arr.push(etapa.dataset.idx);
+      localStorage.setItem(LS_KEY, JSON.stringify(arr));
+    }
+  }
+
+  // Restaurar desbloqueos guardados en visitas anteriores
+  let previos = [];
+  try{ previos = JSON.parse(localStorage.getItem(LS_KEY)) || []; }catch(e){}
+  bloqueadas.forEach(etapa=>{
+    if(previos.includes(etapa.dataset.idx)) desbloquear(etapa, false);
+  });
+
+  btn.addEventListener('click', ()=>{
+    const val = input.value.trim().toUpperCase();
+    if(!val){ msg.textContent = 'Ingresá un código.'; msg.className = 'desbloqueo-msg error'; return; }
+    const etapa = bloqueadas.find(e => e.classList.contains('bloqueada') && codigoEsperado(parseInt(e.dataset.idx,10)) === val);
+    if(etapa){
+      desbloquear(etapa, true);
+      msg.textContent = '✦ Prueba revelada ✦';
+      msg.className = 'desbloqueo-msg ok';
+      input.value = '';
+    } else {
+      msg.textContent = 'Código incorrecto o ya usado.';
+      msg.className = 'desbloqueo-msg error';
+    }
+  });
+  input.addEventListener('keydown', e=>{ if(e.key === 'Enter') btn.click(); });
+})();
+</script>
+</style>
 
 <section id="gameplay">
   <div class="wrap">
@@ -915,10 +1067,9 @@ footer .cred-rol{
       <button class="demo-btn" id="demoResetBtn">⟲ Reiniciar demo</button>
     </div>
     <div class="demo-frame-wrap" id="demoFrameWrap">
-      <iframe id="demoFrame" src="demo-nivel1/index.html" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>
+      <iframe id="demoFrame" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>
       <div class="demo-overlay" id="demoOverlay">
-        <span>▶ Click para jugar</span>
-        <small>(esto pausa la música de la página)</small>
+        <span>▶ Comenzar</span>
       </div>
     </div>
     <div class="demo-controles">
@@ -955,6 +1106,7 @@ footer .cred-rol{
   const stopBtn = document.getElementById('demoStopBtn');
   const btns = document.querySelectorAll('.demo-sizer .demo-btn');
   const SRC_ORIGINAL = 'demo-nivel1/index.html';
+  let temaSonandoAntesDelJuego = false;
 
   btns.forEach(b=>{
     b.addEventListener('click', ()=>{
@@ -973,41 +1125,39 @@ footer .cred-rol{
     });
   });
 
+  // El iframe no tiene src hasta que se hace click: el juego no arranca (ni suena) solo.
+  function iniciarJuego(fresh){
+    temaSonandoAntesDelJuego = typeof tema !== 'undefined' && !tema.paused;
+    frame.src = fresh ? (SRC_ORIGINAL + '?r=' + Date.now()) : SRC_ORIGINAL;
+    overlay.classList.add('oculto');
+    if(typeof pausarTema === 'function') pausarTema();
+    if(typeof audio !== 'undefined' && !audio.paused && typeof audio.pause === 'function') audio.pause();
+    pintarMuteBtn();
+    frame.focus();
+  }
+
+  overlay.addEventListener('click', ()=> iniciarJuego(false));
+  resetBtn.addEventListener('click', ()=> iniciarJuego(true));
+
   stopBtn.addEventListener('click', ()=>{
     frame.src = 'about:blank';
     overlay.classList.remove('oculto');
-    overlay.querySelector('span').textContent = '▶ Click para jugar';
-  });
-
-  // Al hacer click para jugar, se pausa la música de la página (el juego tiene su propio audio)
-  overlay.addEventListener('click', ()=>{
-    if(frame.src === 'about:blank' || frame.getAttribute('src') === 'about:blank'){
-      frame.src = SRC_ORIGINAL;
-    }
-    overlay.classList.add('oculto');
-    if(typeof pausar === 'function' && typeof audio !== 'undefined' && !audio.paused){
-      pausar();
-      pintarMuteBtn();
-    }
-    frame.focus();
+    overlay.querySelector('span').textContent = '▶ Comenzar';
+    if(temaSonandoAntesDelJuego && typeof reproducirTema === 'function') reproducirTema();
+    pintarMuteBtn();
   });
 
   function pintarMuteBtn(){
-    const suena = typeof audio !== 'undefined' && !audio.paused;
+    const suena = typeof tema !== 'undefined' && !tema.paused;
     muteBtn.textContent = suena ? "🔊 Música de la página: ON" : "🔇 Música de la página: OFF";
     muteBtn.classList.toggle('muteado', !suena);
   }
 
   muteBtn.addEventListener('click', ()=>{
-    if(typeof audio === 'undefined') return;
-    if(audio.paused){ if(typeof reproducir === 'function') reproducir(); }
-    else{ if(typeof pausar === 'function') pausar(); }
+    if(typeof tema === 'undefined') return;
+    if(tema.paused){ if(typeof reproducirTema === 'function') reproducirTema(); }
+    else{ if(typeof pausarTema === 'function') pausarTema(); temaDetenido = true; }
     pintarMuteBtn();
-  });
-
-  resetBtn.addEventListener('click', ()=>{
-    frame.src = 'demo-nivel1/index.html?r=' + Date.now();
-    overlay.classList.remove('oculto');
   });
 
   // Sincroniza el botón si la música se pausa/reproduce desde otro control de la página
@@ -1066,19 +1216,16 @@ footer .cred-rol{
   <div class="wrap">
     <h2 class="sec-title">Controles</h2>
     <p class="sec-sub">Panel de mando de la abadía</p>
-    <div class="cpo-frame">
+    <div class="cpo-frame cpo-chico">
       <img src="img/img_065.jpg" alt="Panel de controles arcade" loading="lazy">
     </div>
     <div class="ctl-list">
       <span class="ctl">✜ MOVER — Joystick de 8 direcciones</span>
       <span class="ctl">SALTO</span>
       <span class="ctl">GOLPE — Báculo sagrado</span>
-      <span class="ctl">PODER MÍSTICO — Invocación de salmos</span>
-      <span class="ctl destacado">✠ JUICIO DIVINO — El golpe final</span>
       <span class="ctl">START — Comienza el juego</span>
       <span class="ctl">CREDITS — Créditos</span>
     </div>
-    <p style="text-align:center;font-family:'MedievalSharp',serif;color:var(--hueso-osc);margin-top:1.6rem;font-size:.95rem">Algunas opciones no se ven en pantalla: se invocan con las teclas, como los secretos de los arcades de antes.</p>
     <div class="velas"><div class="vela"></div><div class="vela"></div><div class="vela"></div></div>
   </div>
 </section>
@@ -1235,13 +1382,13 @@ addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')})
 })();
 </script>
 
+<audio id="pageTheme" src="audio/gorfus_theme.mp3" loop preload="auto"></audio>
 <audio id="bgm" loop preload="auto" controlsList="nodownload noplaybackrate"></audio>
 
 <script>
 // ===== MÚSICA: playlist y reproductor =====
 // Para agregar temas: sumá entradas a PISTAS con {titulo, b64} (embebido) o {titulo, src} (archivo junto al html).
 const PISTAS = [
-  {titulo: "Gorfus Theme", src: "audio/gorfus_theme.mp3", tema: true},
   {titulo: "Demons Killer — Nivel 11", src: "audio/demons_killer_nivel_11.mp3", fondo: true},
   {titulo: "Nivel 1 — El Redentor (Full)", src: "audio/nivel_1_el_redentor_full.mp3"},
   {titulo: "Nivel 2 — Ánimas Perdidas", src: "audio/nivel_2_animas_perdidas.mp3"},
@@ -1269,9 +1416,11 @@ function pistaURL(p){
   return p.url;
 }
 
+const tema = document.getElementById('pageTheme');
 const audio = document.getElementById('bgm');
 const navPlay = document.getElementById('navPlay');
-const navNext = document.getElementById('navNext');
+const navStop = document.getElementById('navStop');
+const navVol = document.getElementById('navVol');
 const navTit = document.getElementById('navTit');
 const jbNow = document.getElementById('jbNow');
 const jbPlay = document.getElementById('jbPlay');
@@ -1286,6 +1435,8 @@ const jbLista = document.getElementById('jbLista');
 
 let idx = 0;
 let interactuo = false;
+let temaDetenido = false; // true si el usuario apagó manualmente el tema de la página
+tema.volume = 0.6;
 audio.volume = 0.6;
 
 function fmt(s){
@@ -1298,7 +1449,7 @@ PISTAS.forEach((p,i)=>{
   const li = document.createElement('li');
   li.innerHTML = '<span class="num">'+(i+1)+'</span><span class="nom">'+p.titulo+'</span>'+
     '<span class="eq"><span></span><span></span><span></span></span><span class="dur" id="dur'+i+'">—</span>';
-  li.addEventListener('click', ()=>{ cargar(i); reproducir(); });
+  li.addEventListener('click', ()=>{ cargar(i); reproducirJukebox(); });
   jbLista.appendChild(li);
 });
 
@@ -1314,29 +1465,55 @@ function cargar(i){
   audio.src = pistaURL(PISTAS[idx]);
   audio.loop = PISTAS.length === 1 || !!PISTAS[idx].fondo;
   jbNow.textContent = "✝ " + PISTAS[idx].titulo + " ✝";
-  navTit.textContent = "♪ " + PISTAS[idx].titulo;
   marcarLista();
 }
 
-function pintarBotones(){
+function pintarBotonesJukebox(){
   const suena = !audio.paused;
   jbPlay.textContent = suena ? "❚❚" : "▶";
+  marcarLista();
+}
+function pintarNavBotones(){
+  const suena = !tema.paused;
   navPlay.textContent = suena ? "❚❚" : "▶";
   navPlay.classList.toggle('sonando', suena);
   navPlay.classList.remove('invitando');
-  marcarLista();
 }
 
-function reproducir(){
-  audio.play().then(pintarBotones).catch(()=>{ interactuo = false; });
+// ----- Tema de la página (Gorfus Theme) -----
+function reproducirTema(){
+  if(!audio.paused) return; // no pisar si el jukebox está sonando
+  temaDetenido = false;
+  tema.play().then(pintarNavBotones).catch(()=>{ interactuo = false; });
 }
-function pausar(){ audio.pause(); pintarBotones(); }
+function pausarTema(){ tema.pause(); pintarNavBotones(); }
 
-jbPlay.addEventListener('click', ()=> audio.paused ? reproducir() : pausar());
-navPlay.addEventListener('click', ()=> audio.paused ? reproducir() : pausar());
-jbPrev.addEventListener('click', ()=>{ cargar(idx-1); reproducir(); });
-jbNext.addEventListener('click', ()=>{ cargar(idx+1); reproducir(); });
-navNext.addEventListener('click', ()=>{ cargar(idx+1); reproducir(); });
+navPlay.addEventListener('click', ()=>{
+  if(tema.paused){ reproducirTema(); }
+  else { temaDetenido = true; pausarTema(); }
+});
+navStop.addEventListener('click', ()=>{
+  temaDetenido = true;
+  tema.pause();
+  tema.currentTime = 0;
+  pintarNavBotones();
+});
+navVol.addEventListener('input', ()=> tema.volume = navVol.value/100);
+
+// ----- Jukebox (playlist de la abadía) -----
+function reproducirJukebox(){
+  pausarTema();
+  audio.play().then(pintarBotonesJukebox).catch(()=>{});
+}
+function pausarJukebox(){
+  audio.pause();
+  pintarBotonesJukebox();
+  if(!temaDetenido) reproducirTema();
+}
+
+jbPlay.addEventListener('click', ()=> audio.paused ? reproducirJukebox() : pausarJukebox());
+jbPrev.addEventListener('click', ()=>{ cargar(idx-1); reproducirJukebox(); });
+jbNext.addEventListener('click', ()=>{ cargar(idx+1); reproducirJukebox(); });
 jbVol.addEventListener('input', ()=> audio.volume = jbVol.value/100);
 
 audio.addEventListener('timeupdate', ()=>{
@@ -1351,29 +1528,22 @@ audio.addEventListener('loadedmetadata', ()=>{
   if(d) d.textContent = fmt(audio.duration);
 });
 audio.addEventListener('ended', ()=>{
-  if(PISTAS.length > 1){
-    // Tras el tema principal (o cualquier otra), sortea entre el resto de la playlist (nunca repite el tema)
-    let siguiente;
-    do{ siguiente = Math.floor(Math.random()*PISTAS.length); } while(PISTAS[siguiente].tema && PISTAS.length > 1);
-    cargar(siguiente);
-    reproducir();
-  } else { pausar(); }
+  if(PISTAS.length > 1){ cargar(Math.floor(Math.random()*PISTAS.length)); reproducirJukebox(); }
+  else { pausarJukebox(); }
 });
 jbProg.addEventListener('click', e=>{
   const r = jbProg.getBoundingClientRect();
   if(audio.duration) audio.currentTime = ((e.clientX - r.left)/r.width) * audio.duration;
 });
 
-// Tema inicial: siempre el Gorfus Theme (tema principal de la pagina)
-const idxTema = PISTAS.findIndex(p => p.tema);
-cargar(idxTema >= 0 ? idxTema : 0);
+cargar(0);
 
 // Autoplay: bloqueado por los navegadores hasta la primera interacción.
-// Al primer click/tecla/touch en la página arranca el tema de fondo.
+// Al primer click/tecla/touch en la página arranca el tema de la página (Gorfus Theme).
 function primerContacto(){
   if(interactuo) return;
   interactuo = true;
-  if(audio.paused) reproducir();
+  if(tema.paused && !temaDetenido) reproducirTema();
   removeEventListener('click', primerContacto);
   removeEventListener('keydown', primerContacto);
   removeEventListener('touchstart', primerContacto);
